@@ -1,0 +1,87 @@
+%start Map1::Start
+%class AppClass
+%header AppClass.h
+
+%map Map1
+
+%%
+Start
+{
+   Devider nil {}
+	Letter		Header	{pushHeadline(); }
+	
+}
+
+Header
+{
+	Letter		Header	{pushHeadline(); }
+	Dot Domain {check();}
+	Colon		StateA		{check();}
+
+}
+
+StateA
+{
+	Slash		StateB		{}
+}
+StateB
+{
+	Slash		Server		{}
+}
+
+
+Server
+{
+	Letter		Server		{inc(); less(20); }
+	Number Server       {inc();less(20);}
+	Dot		Domain		{clear(); }
+}
+Domain 
+{
+   Letter      Domain {inc(); less(20);}
+   Number Domain{inc();less(20);}
+   Dot Zone {clear();}
+}
+
+Zone
+{
+	Letter		Zone		{add();inc(); less(5); }
+	Devider Ending {}
+	EOS Ending {}
+
+}
+
+
+Ending
+{
+	Devider		Ending		{}
+	EOS		OK		{Acceptable(); }
+}
+
+OK
+{}
+
+Error
+{
+	Devider		Error		{Unacceptable(); }
+	EOS		Error		{Unacceptable(); }
+	Dot		Error		{Unacceptable(); }
+	Letter		Error		{Unacceptable(); }
+	Number		Error		{Unacceptable(); }
+	Slash		Error		{Unacceptable(); }
+	Colon		Error		{Unacceptable(); }
+	Unknown		Error		{Unacceptable(); }
+}
+
+Default
+{
+	Devider		Error		{Unacceptable(); }
+	EOS		Error		{Unacceptable(); }
+	Dot		Error		{Unacceptable(); }
+	Letter		Error		{Unacceptable(); }
+	Number		Error		{Unacceptable(); }
+	Slash		Error		{Unacceptable(); }
+	Colon		Error		{Unacceptable(); }
+	Unknown		Error		{Unacceptable(); }
+}
+%%
