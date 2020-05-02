@@ -68,10 +68,7 @@ void AppClass::less(int number)
 
 }
 
-void AppClass::print(std::string message)
-{
-	cout << message << endl;
-}
+
 
 void AppClass::check()
 {
