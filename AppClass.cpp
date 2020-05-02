@@ -31,7 +31,6 @@ bool AppClass::CheckString(string str)
 		if (!isAcceptable)
 		{
 			bool ret = isAcceptable;
-			Refresh();
 			return false;
 		}
 		if (isletter(c))
@@ -53,7 +52,6 @@ bool AppClass::CheckString(string str)
 	}
 	_fsm.EOS();
 	bool ret = isAcceptable;
-	Refresh();
 	return ret;
 }
 
